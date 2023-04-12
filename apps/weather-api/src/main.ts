@@ -5,10 +5,14 @@
 
 import express from 'express';
 import * as path from 'path';
+import swaggerRouter from './middleware/swagger';
 
 const app = express();
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
+
+// Middleware
+app.use('/swagger', swaggerRouter);
 
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to weather-api!' });
