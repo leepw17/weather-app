@@ -75,7 +75,7 @@ export interface WeatherGetResponse {
   /**
    * Known weather informatoin
    */
-  weather: Weather;
+  weather: Weather[];
 
   /**
    * Wind information

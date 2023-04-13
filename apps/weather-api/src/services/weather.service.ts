@@ -10,7 +10,7 @@ import {
 } from '@palmetto-assignment/models';
 
 class WeatherService {
-  async getWeather(req: WeatherGetRequest): Promise<any> {
+  async getWeather(req: WeatherGetRequest): Promise<WeatherGetResponse> {
     const location: LocationGetResponse = await this.getLocation(req);
     if (!location) {
       return null;
@@ -24,16 +24,19 @@ class WeatherService {
     const response: OWWEatherGetResponse = await openWeatherProvider.getWeather(
       request
     );
+
     return {
+      city: location.name,
       feelsLike: response.main.feels_like,
       sunrise: new Date(response.sys.sunrise * 1000).toLocaleString(),
+      state: location.state,
       sunset: new Date(response.sys.sunset * 1000).toLocaleString(),
       temp: response.main.temp,
       tempMax: response.main.temp_max,
       tempMin: response.main.temp_min,
-      weatherDescription: response.weather.description,
-      weatherIcon: response.weather.icon,
-      weatherMain: response.weather.main,
+      weatherDescription: response.weather[0].description,
+      weatherIcon: response.weather[0].icon,
+      weatherMain: response.weather[0].main,
       windSpeed: response.wind.speed,
     } as WeatherGetResponse;
   }

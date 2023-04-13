@@ -11,7 +11,12 @@ router.get(
     query('zip').exists().withMessage('Required if q is not provided'),
   ]),
   query('q').customSanitizer((value) => {
-    return value.replace(/\s+/g, '');
+    if (value) {
+      let split = value.split(',');
+      split = split.map((x) => x.trim());
+
+      return split.join(',');
+    }
   }),
   weatherController.get
 );

@@ -15,7 +15,10 @@ const options = {
       },
     ],
   },
-  apis: ['apps/weather-api/src/controllers/**/*ts'],
+  apis: [
+    'apps/weather-api/src/controllers/**/*.ts',
+    'libs/models/src/lib/**/*.ts',
+  ],
 };
 
 const swaggerSpec = swaggerJsDoc(options);
