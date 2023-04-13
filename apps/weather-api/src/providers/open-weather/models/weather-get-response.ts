@@ -6,7 +6,7 @@ import { Sys } from './sys';
 import { Weather } from './weather';
 import { Wind } from './wind';
 
-export interface WeatherResponse {
+export interface WeatherGetResponse {
   /**
    * Internal parameter
    */

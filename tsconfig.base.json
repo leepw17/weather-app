@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@palmetto-assignment/models": ["libs/models/src/index.ts"]
+      "@palmetto-assignment/models": ["libs/models/src/index.ts"],
+      "@palmetto-assignment/utils": ["libs/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

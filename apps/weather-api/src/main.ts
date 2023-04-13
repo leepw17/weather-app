@@ -6,6 +6,7 @@
 import express from 'express';
 import * as path from 'path';
 import swaggerRouter from './middleware/swagger';
+import weatherRouter from './routes/weather.route';
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use('/swagger', swaggerRouter);
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to weather-api!' });
 });
+app.use('/api/weather', weatherRouter);
 
 const port = process.env.PORT || 3333;
 const server = app.listen(port, () => {

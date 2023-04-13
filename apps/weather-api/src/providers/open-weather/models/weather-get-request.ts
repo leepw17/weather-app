@@ -1,21 +1,24 @@
-import { WeatherUnit } from './weather-unit-type';
+import { MeasurementUnitType } from '@palmetto-assignment/models';
 
 export interface WeatherGetRequest {
   /**
-   * Geographical coordinate, latitude
+   * Your unique API key
    * - Required
+   */
+  appid?: string;
+
+  /**
+   * Geographical coordinates (latitude)
    */
   lat: number;
 
   /**
-   * Geographical coordinate, longitude
-   * - Required
+   * Geographical coordinates (longitude)
    */
   lon: number;
 
   /**
-   * Units of measurement, defaults to standard
-   * - Optional
+   * Units of measurement. Defaults to standard if not provided
    */
-  units: WeatherUnit;
+  units?: MeasurementUnitType;
 }
