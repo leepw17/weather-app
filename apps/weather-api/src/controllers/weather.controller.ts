@@ -6,7 +6,6 @@ import {
   WeatherGetResponse,
 } from '@palmetto-assignment/models';
 import { ApiError } from '@palmetto-assignment/utils';
-
 import { weatherService } from '../services/weather.service';
 
 class WeatherController {
@@ -44,7 +43,8 @@ class WeatherController {
   async get(req: Request, resp: Response) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return resp.status(412).json({ errors: errors.array() });
+      resp.status(412);
+      return resp.send({ errors: errors.array() });
     }
 
     const request = req.query as unknown as WeatherGetRequest;
@@ -55,14 +55,16 @@ class WeatherController {
       );
 
       if (!response) {
-        return resp.status(404).send({ message: 'Not found' });
+        resp.status(404);
+        return resp.send({ message: 'Not found' });
       }
 
-      return resp.status(200).send(response);
+      resp.status(200);
+      return resp.send(response);
     } catch (err) {
       const error = err as ApiError;
-
-      return resp.status(error.statusCode).send({ message: error.message });
+      resp.status(error.statusCode);
+      return resp.send({ message: error.message });
     }
   }
 }

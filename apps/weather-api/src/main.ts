@@ -5,19 +5,22 @@
 
 import express from 'express';
 import * as path from 'path';
+import * as dotenv from 'dotenv';
+import morganMiddleware from './middleware/morgan';
 import swaggerRouter from './middleware/swagger';
 import weatherRouter from './routes/weather.route';
 
+dotenv.config();
 const app = express();
+
+app.use(morganMiddleware);
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 // Middleware
 app.use('/swagger', swaggerRouter);
 
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to weather-api!' });
-});
+// Routes
 app.use('/api/weather', weatherRouter);
 
 const port = process.env.PORT || 3333;

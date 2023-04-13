@@ -1,4 +1,4 @@
 export interface WeatherGetRequest {
-  q: string;
-  zip: string;
+  q?: string;
+  zip?: string;
 }

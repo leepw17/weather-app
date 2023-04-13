@@ -1,6 +1,6 @@
 import express from 'express';
 import { query, oneOf } from 'express-validator';
-import { weatherController } from '../controllers';
+import { weatherController } from '../controllers/weather.controller';
 
 const router = express.Router();
 
