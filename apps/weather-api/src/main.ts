@@ -1,10 +1,4 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import express from 'express';
-import * as path from 'path';
 import * as dotenv from 'dotenv';
 import morganMiddleware from './middleware/morgan';
 import swaggerRouter from './middleware/swagger';
@@ -13,11 +7,8 @@ import weatherRouter from './routes/weather.route';
 dotenv.config();
 const app = express();
 
-app.use(morganMiddleware);
-
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
-
 // Middleware
+app.use(morganMiddleware);
 app.use('/swagger', swaggerRouter);
 
 // Routes

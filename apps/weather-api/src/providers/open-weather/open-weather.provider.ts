@@ -12,6 +12,7 @@ const APP_KEY = process.env.OPEN_WEATHER_API_KEY;
 class OpenWeatherProvider {
   async getWeather(request: WeatherGetRequest): Promise<WeatherGetResponse> {
     const url = `${BASE_URL}/data/2.5/weather`;
+
     const response = await apiService.get<
       WeatherGetResponse,
       WeatherGetRequest

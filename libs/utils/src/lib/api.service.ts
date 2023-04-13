@@ -24,6 +24,10 @@ class ApiService {
 
     return await response.json();
   }
+
+  // async post
+  // async put
+  // async delete
 }
 
 export const apiService = new ApiService();
