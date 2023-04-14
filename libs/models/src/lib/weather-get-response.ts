@@ -13,6 +13,12 @@
  *          type: number
  *          description: What the temperature feels like (Fahrenheit)
  *          example: 58.05
+ *        humidity:
+ *          type: number
+ *          description: Humidity (%)
+ *        pressure:
+ *          type: number
+ *          description: Atmospheric pressure on the sea level (hPa)
  *        state:
  *          type: string
  *          description: State code
@@ -58,6 +64,8 @@
 export interface WeatherGetResponse {
   city: string;
   feelsLike: number;
+  humidity: number;
+  pressure: number;
   state: string;
   sunrise: string;
   sunset: string;

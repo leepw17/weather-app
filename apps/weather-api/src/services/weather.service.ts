@@ -27,17 +27,25 @@ class WeatherService {
 
     return {
       city: location.name,
-      feelsLike: response.main.feels_like,
-      sunrise: new Date(response.sys.sunrise * 1000).toLocaleString(),
+      feelsLike: Math.floor(response.main.feels_like),
+      humidity: response.main.humidity,
+      pressure: response.main.pressure,
+      sunrise: new Date(response.sys.sunrise * 1000).toLocaleString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+      }),
       state: location.state,
-      sunset: new Date(response.sys.sunset * 1000).toLocaleString(),
+      sunset: new Date(response.sys.sunset * 1000).toLocaleString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+      }),
       temp: response.main.temp,
-      tempMax: response.main.temp_max,
-      tempMin: response.main.temp_min,
+      tempMax: Math.floor(response.main.temp_max),
+      tempMin: Math.floor(response.main.temp_min),
       weatherDescription: response.weather[0].description,
       weatherIcon: response.weather[0].icon,
       weatherMain: response.weather[0].main,
-      windSpeed: response.wind.speed,
+      windSpeed: Math.floor(response.wind.speed),
     } as WeatherGetResponse;
   }
 

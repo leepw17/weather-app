@@ -1,1 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  background-color: #101a1e;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}

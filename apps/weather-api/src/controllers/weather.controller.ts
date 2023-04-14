@@ -63,7 +63,7 @@ class WeatherController {
       return resp.send(response);
     } catch (err) {
       const error = err as ApiError;
-      resp.status(error.statusCode);
+      resp.status(error.statusCode || 500);
       return resp.send({ message: error.message });
     }
   }
